@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
 
-    <environment names="Development">
+    <environment names="Development,Staging,Production">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/lib/fontawesome/css/font-awesome.css">
         <link rel="stylesheet" href="~/css/AdminLTE.css">
@@ -14,15 +14,21 @@
         <link rel="stylesheet" href="~/css/theme/LifeSkin.css">
         <link rel="stylesheet" href="~/css/site.css" />
     </environment>
-    <environment names="Staging,Production">
-        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+    <environment names="Staging1,Production1">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/lib/fontawesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="~/css/AdminLTE.min.css">
+        <link rel="stylesheet" href="~/css/skins/skin-blue.min.css">
+        <link rel="stylesheet" href="~/css/theme/LifeSkin.css">
+        <link rel="stylesheet" href="~/css/site.min.css" />
+        @*<link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />*@
     </environment>
     @Html.Raw(JavaScriptSnippet.FullScript)
 </head>
-<body class="hold-transition life-light skin-green-light sidebar-mini fixed">
+<body class="hold-transition life-dark skin-blue sidebar-mini fixed">
     <div class="wrapper">
         <!-- Main Header -->
         @await Html.PartialAsync("_Navbar")
@@ -67,7 +73,7 @@
         <script src="~/js/site.js" asp-append-version="true"></script>
     </environment>
     <environment names="Staging,Production">
-        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+        @*<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
                 asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
                 asp-fallback-test="window.jQuery"
                 crossorigin="anonymous"
@@ -79,7 +85,13 @@
                 crossorigin="anonymous"
                 integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
         </script>
-        <script src="~/js/site.min.js" asp-append-version="true"></script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>*@
+
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/lib/jquery-slimscroll/jquery.slimscroll.js"></script>
+        <script src="~/js/app.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
     </environment>
 
     @RenderSection("Scripts", required: false)
@@ -95,17 +107,17 @@
                     liMenus.each(function (idx, li) {
                         curMenuIds.push($(li).data("id"));
                     });
-                    LLY.cookie.set("curMenuIds", curMenuIds.join(","));
+                    //LLY.cookie.set("curMenuIds", curMenuIds.join(","));
                     //e.preventDefault();
                     //window.location.href = path;
                 });
                 //collapsed
                 $("body").on("expanded.pushMenu", function () {
                     $.AdminLTE.layout.fixSidebar();
-                    LLY.cookie.set("sidebarCollapse", "");
+                    //LLY.cookie.set("sidebarCollapse", "");
                 }).on("collapsed.pushMenu", function () {
                     $.AdminLTE.layout.fixSidebar();
-                    LLY.cookie.set("sidebarCollapse", "sidebar-collapse");
+                    //LLY.cookie.set("sidebarCollapse", "sidebar-collapse");
                 });
             });
     </script>

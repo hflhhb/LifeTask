@@ -308,7 +308,8 @@ input.error:focus {
         display: block;
         position: absolute;
         width: auto;
-        left: 130px;
+        /*left: 130px;*/
+        right:5px;
         top: 2px;
         z-index: 900;
     }
