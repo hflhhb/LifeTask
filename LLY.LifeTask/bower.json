@@ -1,0 +1,15 @@
+{
+  "name": "asp.net",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "3.3.7",
+    "jquery": "2.2.0",
+    "jquery-validation": "1.14.0",
+    "jquery-validation-unobtrusive": "3.2.6",
+    "fontawesome": "^4.7.0",
+    "html5shiv": "3.7.3",
+    "respond": "1.4.2",
+    "jquery-slimscroll": "v1.3.8",
+    "nprogress": "v0.2.0"
+  }
+}
