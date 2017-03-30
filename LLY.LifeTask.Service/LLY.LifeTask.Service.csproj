@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LLY.LifeTask.Common\LLY.LifeTask.Common.csproj" />
+    <ProjectReference Include="..\LLY.LifeTask.Dapper\LLY.LifeTask.Dapper.csproj" />
+    <ProjectReference Include="..\LLY.LifeTask.EntityFramework\LLY.LifeTask.EntityFramework.csproj" />
+    <ProjectReference Include="..\LLY.LifeTask.Model.EntityFramework\LLY.LifeTask.Model.EntityFramework.csproj" />
+    <ProjectReference Include="..\LLY.LifeTask.Model\LLY.LifeTask.Model.csproj" />
+  </ItemGroup>
+
+</Project>

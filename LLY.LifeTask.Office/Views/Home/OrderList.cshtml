@@ -1,0 +1,14 @@
+﻿@using LLY.LifeTask.Model.Life
+
+@model IEnumerable<SaleOrder>
+@{
+
+    ViewBag.PageTitle = "订单列表";
+}
+
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>@item.OrderNo</li>
+    }
+</ul>

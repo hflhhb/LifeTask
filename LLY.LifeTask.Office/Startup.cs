@@ -2,11 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using LLY.LifeTask.Service;
+using LLY.LifeTask.EntityFramework.Repositories;
+using LLY.LifeTask.EntityFramework;
+using LLY.LifeTask.Model.EntityFramework;
+using LLY.LifeTask.Dapper;
 
 namespace LLY.LifeTask.Office
 {
@@ -27,8 +33,17 @@ namespace LLY.LifeTask.Office
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //SqlServer DbConnectString
+            services.AddDbContext<LifeDbContext>(optBuilder => optBuilder.UseSqlServer(Configuration.GetConnectionString("Life")));
             // Add framework services.
             services.AddMvc();
+            //DI
+            services.AddScoped<IDataContextFactory<LifeDbContext>, GenericDataContextFactory<LifeDbContext>>();
+            services.AddScoped<ISaleOrderRepository, SaleOrderRepository>();
+            services.AddScoped<ISaleOrderProvider, SaleOrderProvider>();
+            services.AddScoped<ISaleOrderEfService, SaleOrderServiceForEF>();
+            services.AddScoped<ISaleOrderDapperService, SaleOrderServiceForDapper>();
+            services.AddScoped<ISaleOrderService, SaleOrderService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
