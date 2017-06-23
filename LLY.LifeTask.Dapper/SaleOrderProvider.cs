@@ -12,11 +12,17 @@ namespace LLY.LifeTask.Dapper
         IEnumerable<SaleOrder> GetAllOrders();
     }
 
-    public class SaleOrderProvider : DapperDataProvider, ISaleOrderProvider
+    public class SaleOrderProvider : ISaleOrderProvider
     {
+        private readonly DapperDataProvider _dbFactory = null;
+
+        public SaleOrderProvider(DapperDataProvider dbFactory)
+        {
+            _dbFactory = dbFactory;
+        }
         public IEnumerable<SaleOrder> GetAllOrders()
         {
-            using (var db = GetDbConnection())
+            using (var db = _dbFactory.GetDbConnection())
             {
                 return db.Query<SaleOrder>("select * from SaleOrders");
                 //return new List<SaleOrder>() { new SaleOrder() { OrderNo ="xyz" }, new SaleOrder() { OrderNo = "123" } };

@@ -13,6 +13,7 @@ using LLY.LifeTask.EntityFramework.Repositories;
 using LLY.LifeTask.EntityFramework;
 using LLY.LifeTask.Model.EntityFramework;
 using LLY.LifeTask.Dapper;
+using LLY.LifeTask.Common;
 
 namespace LLY.LifeTask.Office
 {
@@ -35,6 +36,7 @@ namespace LLY.LifeTask.Office
         {
             //SqlServer DbConnectString
             services.AddDbContext<LifeDbContext>(optBuilder => optBuilder.UseSqlServer(Configuration.GetConnectionString("Life")));
+            services.AddSingleton(o => new DapperDataProvider(new DapperDbOptions(Configuration.GetConnectionString("Life"))));
             // Add framework services.
             services.AddMvc();
             //DI
