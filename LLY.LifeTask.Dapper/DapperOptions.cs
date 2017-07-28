@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace LLY.LifeTask.Common
+namespace LLY.LifeTask.Dapper
 {
-    public class DapperDbOptions
+    public class DapperOptions
     {
-        public DapperDbOptions(string connectString)
+        public DapperOptions()
+        {
+
+        }
+        public DapperOptions(string connectString)
         {
             ConnectString = connectString;
         }

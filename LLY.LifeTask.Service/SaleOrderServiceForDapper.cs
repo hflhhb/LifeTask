@@ -9,6 +9,7 @@ namespace LLY.LifeTask.Service
     public interface ISaleOrderDapperService
     {
         IEnumerable<SaleOrder> GetOrders();
+        Task<IEnumerable<SaleOrder>> GetOrdersAsync();
     }
     public class SaleOrderServiceForDapper : ISaleOrderDapperService
     {
@@ -21,6 +22,11 @@ namespace LLY.LifeTask.Service
         public IEnumerable<SaleOrder> GetOrders()
         {
             return _orderProvider.GetAllOrders();
+        }
+
+        public async Task<IEnumerable<SaleOrder>> GetOrdersAsync()
+        {
+            return await _orderProvider.GetAllOrdersAsync();
         }
 
     }
