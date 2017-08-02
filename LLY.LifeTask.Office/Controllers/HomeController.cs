@@ -49,13 +49,14 @@ namespace LLY.LifeTask.Office.Controllers
             return View(model);
         }
 
-        public IActionResult OrderListDapper2()
+        public IActionResult OrderListDapper()
         {
-            var model = _orderSvr.GetOrders();
+            var model = _orderSvr.GetOrdersDapper();
             //
             return View("OrderList", model);
         }
-        public async Task<IActionResult> OrderListDapper()
+
+        public async Task<IActionResult> OrderListDapperAsync()
         {
             var model = await _orderSvr.GetOrdersDapperAsync();
             //

@@ -29,13 +29,14 @@ namespace LLY.LifeTask.Dapper
             //    return db.Query<SaleOrder>("select * from SaleOrders");
             //    //return new List<SaleOrder>() { new SaleOrder() { OrderNo ="xyz" }, new SaleOrder() { OrderNo = "123" } };
             //}
-            return _dbFactory.Using(db => db.Query<SaleOrder>("select * from SaleOrders; --waitfor delay '00:00:10'"));
 
-            //return _dbFactory.Connection.Query<SaleOrder>("select * from SaleOrders");
+            //return _dbFactory.Using(db => db.Query<SaleOrder>("select * from SaleOrders; --waitfor delay '00:00:10'"));
+            return _dbFactory.Connection.Query<SaleOrder>("select * from SaleOrders");
         }
         public async Task<IEnumerable<SaleOrder>> GetAllOrdersAsync()
         {
-            return await _dbFactory.UsingAsync(async (db) => await db.QueryAsync<SaleOrder>("select * from SaleOrders;"));
+            //return await _dbFactory.UsingAsync(async (db) => await db.QueryAsync<SaleOrder>("select * from SaleOrders;"));
+            return await _dbFactory.Connection.QueryAsync<SaleOrder>("select * from SaleOrders;");
         }
     }
 }

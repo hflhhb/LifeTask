@@ -11,12 +11,22 @@ namespace LLY.LifeTask.Office
     {
         public static void Main(string[] args)
         {
+            var urls = new List<string>();
+            if (args.Length <= 0)
+            {
+                urls.Add("http://*:5000");
+            }
+            else
+            {
+                urls.AddRange(args);
+            }
             var host = new WebHostBuilder()
                 .UseKestrel()
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()
                 .UseStartup<Startup>()
                 .UseApplicationInsights()
+                .UseUrls(urls.ToArray())
                 .Build();
 
             host.Run();
