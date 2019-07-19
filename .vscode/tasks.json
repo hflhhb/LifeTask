@@ -1,0 +1,15 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/LLY.LifeTask.Office/LLY.LifeTask.Office.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        }
+    ]
+}
